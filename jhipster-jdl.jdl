@@ -1,0 +1,62 @@
+
+entity Doctor {
+	idCard String,
+    name String,
+    code String,
+    dateOfBirth String,
+    address String,
+    level String,
+    experience String,
+    type String,
+    academicLevel String
+}
+
+entity Nurse {
+	idCard String,
+    name String,
+    code String,
+    level String,
+    experience String,
+    dateOfBirth String,
+    address String,
+    phoneNumber String,
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Patient {
+	idCard String,
+    name String,
+    code String,
+    dateOfBirth String,
+    address String,
+    phoneNumber String,
+}
+
+entity MedicalHistory {
+	joinedAt Instant,
+    leavedAt Instant,
+    totalPrice Long
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Disease {
+	name String,
+	description String
+}
+
+
+// Set pagination options
+// paginate JobHistory, Employee with infinite-scroll
+paginate Doctor, Nurse, Patient, MedicalHistory, Disease with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+// angularSuffix * with mySuffix

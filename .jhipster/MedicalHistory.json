@@ -1,0 +1,29 @@
+{
+  "name": "MedicalHistory",
+  "fields": [
+    {
+      "fieldName": "joinedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "leavedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "totalPrice",
+      "fieldType": "Long"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201129143138",
+  "entityTableName": "medical_history",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
