@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="doctor">
+            <h2><span>Doctor</span> {{ doctor.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Id Card</span></dt>
+                <dd>
+                    <span>{{ doctor.idCard }}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ doctor.name }}</span>
+                </dd>
+                <dt><span>Code</span></dt>
+                <dd>
+                    <span>{{ doctor.code }}</span>
+                </dd>
+                <dt><span>Date Of Birth</span></dt>
+                <dd>
+                    <span>{{ doctor.dateOfBirth }}</span>
+                </dd>
+                <dt><span>Address</span></dt>
+                <dd>
+                    <span>{{ doctor.address }}</span>
+                </dd>
+                <dt><span>Level</span></dt>
+                <dd>
+                    <span>{{ doctor.level }}</span>
+                </dd>
+                <dt><span>Experience</span></dt>
+                <dd>
+                    <span>{{ doctor.experience }}</span>
+                </dd>
+                <dt><span>Type</span></dt>
+                <dd>
+                    <span>{{ doctor.type }}</span>
+                </dd>
+                <dt><span>Academic Level</span></dt>
+                <dd>
+                    <span>{{ doctor.academicLevel }}</span>
+                </dd>
+                <dt><span>Salary</span></dt>
+                <dd>
+                    <span>{{ doctor.salary }}</span>
+                </dd>
+                <dt><span>Created By</span></dt>
+                <dd>
+                    <span>{{ doctor.createdBy }}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{ doctor.createdDate }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ doctor.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>Last Modified Date</span></dt>
+                <dd>
+                    <span>{{ doctor.lastModifiedDate }}</span>
+                </dd>
+                <dt><span>Disease</span></dt>
+                <dd>
+                    <span *ngFor="let disease of doctor.diseases; let last = last">
+                        <a [routerLink]="['/disease', disease?.id, 'view']">{{ disease.id }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/doctor', doctor.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

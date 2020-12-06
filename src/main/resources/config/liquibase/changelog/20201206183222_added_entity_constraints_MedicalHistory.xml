@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity MedicalHistory.
+    -->
+    <changeSet id="20201206183222-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="doctor_id"
+                                 baseTableName="medical_history"
+                                 constraintName="fk_medical_history_doctor_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="doctor"/>
+
+        <addForeignKeyConstraint baseColumnNames="nurse_id"
+                                 baseTableName="medical_history"
+                                 constraintName="fk_medical_history_nurse_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="nurse"/>
+
+        <addForeignKeyConstraint baseColumnNames="patient_id"
+                                 baseTableName="medical_history"
+                                 constraintName="fk_medical_history_patient_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="patient"/>
+
+        <addForeignKeyConstraint baseColumnNames="disease_id"
+                                 baseTableName="medical_history"
+                                 constraintName="fk_medical_history_disease_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="disease"/>
+
+        <addForeignKeyConstraint baseColumnNames="medicine_id"
+                                 baseTableName="medical_history"
+                                 constraintName="fk_medical_history_medicine_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="medicine"/>
+
+    </changeSet>
+</databaseChangeLog>
