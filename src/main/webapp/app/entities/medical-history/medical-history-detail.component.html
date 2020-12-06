@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="medicalHistory">
+            <h2><span>Medical History</span> {{ medicalHistory.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Joined At</span></dt>
+                <dd>
+                    <span>{{ medicalHistory.joinedAt }}</span>
+                </dd>
+                <dt><span>Leaved At</span></dt>
+                <dd>
+                    <span>{{ medicalHistory.leavedAt }}</span>
+                </dd>
+                <dt><span>Total Price</span></dt>
+                <dd>
+                    <span>{{ medicalHistory.totalPrice }}</span>
+                </dd>
+                <dt><span>Count</span></dt>
+                <dd>
+                    <span>{{ medicalHistory.count }}</span>
+                </dd>
+                <dt><span>Is Paid</span></dt>
+                <dd>
+                    <span>{{ medicalHistory.isPaid }}</span>
+                </dd>
+                <dt><span>Created By</span></dt>
+                <dd>
+                    <span>{{ medicalHistory.createdBy }}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{ medicalHistory.createdDate }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ medicalHistory.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>Last Modified Date</span></dt>
+                <dd>
+                    <span>{{ medicalHistory.lastModifiedDate }}</span>
+                </dd>
+                <dt><span>Doctor</span></dt>
+                <dd>
+                    <div *ngIf="medicalHistory.doctorId">
+                        <a [routerLink]="['/doctor', medicalHistory.doctorId, 'view']">{{ medicalHistory.doctorName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Nurse</span></dt>
+                <dd>
+                    <div *ngIf="medicalHistory.nurseId">
+                        <a [routerLink]="['/nurse', medicalHistory.nurseId, 'view']">{{ medicalHistory.nurseName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Patient</span></dt>
+                <dd>
+                    <div *ngIf="medicalHistory.patientId">
+                        <a [routerLink]="['/patient', medicalHistory.patientId, 'view']">{{ medicalHistory.patientName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Disease</span></dt>
+                <dd>
+                    <div *ngIf="medicalHistory.diseaseId">
+                        <a [routerLink]="['/disease', medicalHistory.diseaseId, 'view']">{{ medicalHistory.diseaseName }}</a>
+                    </div>
+                </dd>
+                <dt><span>Medicine</span></dt>
+                <dd>
+                    <div *ngIf="medicalHistory.medicineId">
+                        <a [routerLink]="['/medicine', medicalHistory.medicineId, 'view']">{{ medicalHistory.medicineName }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/medical-history', medicalHistory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

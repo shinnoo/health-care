@@ -1,0 +1,111 @@
+
+entity Doctor {
+	idCard String,
+    name String,
+    code String unique,
+    dateOfBirth String,
+    address String,
+    level String,
+    experience String,
+    type String,
+    academicLevel String,
+    salary Long,
+    createdBy String minlength(1) maxlength(50),
+    createdDate Instant,
+    lastModifiedBy String minlength(1) maxlength(50),
+    lastModifiedDate Instant
+}
+
+entity Nurse {
+	idCard String,
+    name String,
+    code String unique,
+    level String,
+    experience String,
+    dateOfBirth String,
+    address String,
+    phoneNumber String,
+    salary Long,
+    createdBy String minlength(1) maxlength(50),
+    createdDate Instant,
+    lastModifiedBy String minlength(1) maxlength(50),
+    lastModifiedDate Instant
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Patient {
+	idCard String,
+    name String,
+    code String unique,
+    dateOfBirth String,
+    address String,
+    phoneNumber String,
+    createdBy String minlength(1) maxlength(50),
+    createdDate Instant,
+    lastModifiedBy String minlength(1) maxlength(50),
+    lastModifiedDate Instant
+}
+
+entity MedicalHistory {
+	joinedAt Instant,
+    leavedAt Instant,
+    totalPrice Long,
+    count Integer,
+    isPaid Boolean,
+    createdBy String minlength(1) maxlength(50),
+    createdDate Instant,
+    lastModifiedBy String minlength(1) maxlength(50),
+    lastModifiedDate Instant
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity Disease {
+	name String,
+	description String,
+    createdBy String minlength(1) maxlength(50),
+    createdDate Instant,
+    lastModifiedBy String minlength(1) maxlength(50),
+    lastModifiedDate Instant
+}
+
+entity Medicine {
+	name String,
+    price Long,
+    createdBy String minlength(1) maxlength(50),
+    createdDate Instant,
+    lastModifiedBy String minlength(1) maxlength(50),
+    lastModifiedDate Instant
+}
+
+enum MedicalHistoryStatus {
+	WELCOME,DRUG_SUPPLY,INJECT,CARE,DONE
+}
+
+
+// Set pagination options
+// paginate JobHistory, Employee with infinite-scroll
+paginate Doctor, Nurse, Patient, MedicalHistory, Disease, Medicine with pagination
+
+relationship ManyToOne {
+	 MedicalHistory{Doctor(name)} to Doctor,
+     MedicalHistory{Nurse(name)} to Nurse,
+     MedicalHistory{Patient(name)} to Patient,
+     MedicalHistory{Disease(name)} to Disease,
+     MedicalHistory{Medicine(name)} to Medicine,
+}
+
+relationship ManyToMany {
+	Doctor{disease} to Disease{doctor}
+}
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+// angularSuffix * with mySuffix

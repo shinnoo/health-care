@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="nurse">
+            <h2><span>Nurse</span> {{ nurse.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Id Card</span></dt>
+                <dd>
+                    <span>{{ nurse.idCard }}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ nurse.name }}</span>
+                </dd>
+                <dt><span>Code</span></dt>
+                <dd>
+                    <span>{{ nurse.code }}</span>
+                </dd>
+                <dt><span>Level</span></dt>
+                <dd>
+                    <span>{{ nurse.level }}</span>
+                </dd>
+                <dt><span>Experience</span></dt>
+                <dd>
+                    <span>{{ nurse.experience }}</span>
+                </dd>
+                <dt><span>Date Of Birth</span></dt>
+                <dd>
+                    <span>{{ nurse.dateOfBirth }}</span>
+                </dd>
+                <dt><span>Address</span></dt>
+                <dd>
+                    <span>{{ nurse.address }}</span>
+                </dd>
+                <dt><span>Phone Number</span></dt>
+                <dd>
+                    <span>{{ nurse.phoneNumber }}</span>
+                </dd>
+                <dt><span>Salary</span></dt>
+                <dd>
+                    <span>{{ nurse.salary }}</span>
+                </dd>
+                <dt><span>Created By</span></dt>
+                <dd>
+                    <span>{{ nurse.createdBy }}</span>
+                </dd>
+                <dt><span>Created Date</span></dt>
+                <dd>
+                    <span>{{ nurse.createdDate }}</span>
+                </dd>
+                <dt><span>Last Modified By</span></dt>
+                <dd>
+                    <span>{{ nurse.lastModifiedBy }}</span>
+                </dd>
+                <dt><span>Last Modified Date</span></dt>
+                <dd>
+                    <span>{{ nurse.lastModifiedDate }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/nurse', nurse.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

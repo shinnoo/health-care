@@ -1,0 +1,144 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-medical-history-heading">Create or edit a Medical History</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_joinedAt">Joined At</label>
+                    <div class="d-flex">
+                        <input id="field_joinedAt" type="datetime-local" class="form-control" name="joinedAt" formControlName="joinedAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_leavedAt">Leaved At</label>
+                    <div class="d-flex">
+                        <input id="field_leavedAt" type="datetime-local" class="form-control" name="leavedAt" formControlName="leavedAt" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_totalPrice">Total Price</label>
+                    <input type="number" class="form-control" name="totalPrice" id="field_totalPrice"
+                           formControlName="totalPrice"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_count">Count</label>
+                    <input type="number" class="form-control" name="count" id="field_count"
+                           formControlName="count"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isPaid">Is Paid</label>
+                    <input type="checkbox" class="form-control" name="isPaid" id="field_isPaid"
+                           formControlName="isPaid"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdBy">Created By</label>
+                    <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                           formControlName="createdBy"/>
+                    <div *ngIf="editForm.get('createdBy')!.invalid && (editForm.get('createdBy')!.dirty || editForm.get('createdBy')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('createdBy')?.errors?.minlength">
+                        This field is required to be at least 1 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('createdBy')?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdDate">Created Date</label>
+                    <div class="d-flex">
+                        <input id="field_createdDate" type="datetime-local" class="form-control" name="createdDate" formControlName="createdDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastModifiedBy">Last Modified By</label>
+                    <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                           formControlName="lastModifiedBy"/>
+                    <div *ngIf="editForm.get('lastModifiedBy')!.invalid && (editForm.get('lastModifiedBy')!.dirty || editForm.get('lastModifiedBy')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastModifiedBy')?.errors?.minlength">
+                        This field is required to be at least 1 characters.
+                        </small>
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('lastModifiedBy')?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_lastModifiedDate">Last Modified Date</label>
+                    <div class="d-flex">
+                        <input id="field_lastModifiedDate" type="datetime-local" class="form-control" name="lastModifiedDate" formControlName="lastModifiedDate" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_doctor">Doctor</label>
+                    <select class="form-control" id="field_doctor" name="doctor" formControlName="doctorId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="doctorOption.id" *ngFor="let doctorOption of doctors; trackBy: trackById">{{ doctorOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_nurse">Nurse</label>
+                    <select class="form-control" id="field_nurse" name="nurse" formControlName="nurseId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="nurseOption.id" *ngFor="let nurseOption of nurses; trackBy: trackById">{{ nurseOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_patient">Patient</label>
+                    <select class="form-control" id="field_patient" name="patient" formControlName="patientId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="patientOption.id" *ngFor="let patientOption of patients; trackBy: trackById">{{ patientOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_disease">Disease</label>
+                    <select class="form-control" id="field_disease" name="disease" formControlName="diseaseId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="diseaseOption.id" *ngFor="let diseaseOption of diseases; trackBy: trackById">{{ diseaseOption.name }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_medicine">Medicine</label>
+                    <select class="form-control" id="field_medicine" name="medicine" formControlName="medicineId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="medicineOption.id" *ngFor="let medicineOption of medicines; trackBy: trackById">{{ medicineOption.name }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+{
+  "name": "MedicalHistory",
+  "fields": [
+    {
+      "fieldName": "joinedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "leavedAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "totalPrice",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "count",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "isPaid",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "createdBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength"],
+      "fieldValidateRulesMinlength": "1",
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "createdDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "lastModifiedBy",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength"],
+      "fieldValidateRulesMinlength": "1",
+      "fieldValidateRulesMaxlength": "50"
+    },
+    {
+      "fieldName": "lastModifiedDate",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "doctor",
+      "otherEntityRelationshipName": "medicalHistory",
+      "relationshipName": "doctor",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "nurse",
+      "otherEntityRelationshipName": "medicalHistory",
+      "relationshipName": "nurse",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "patient",
+      "otherEntityRelationshipName": "medicalHistory",
+      "relationshipName": "patient",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "disease",
+      "otherEntityRelationshipName": "medicalHistory",
+      "relationshipName": "disease",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "medicine",
+      "otherEntityRelationshipName": "medicalHistory",
+      "relationshipName": "medicine",
+      "otherEntityField": "name"
+    }
+  ],
+  "changelogDate": "20201206182050",
+  "entityTableName": "medical_history",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

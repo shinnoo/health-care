@@ -1,0 +1,117 @@
+<div>
+    <h2 id="page-heading">
+        <span>Medical Histories</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-medical-history" [routerLink]="['/medical-history/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Medical History
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="medicalHistories?.length === 0">
+        <span>No medicalHistories found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="medicalHistories && medicalHistories.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="joinedAt"><span>Joined At</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="leavedAt"><span>Leaved At</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="totalPrice"><span>Total Price</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="count"><span>Count</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="isPaid"><span>Is Paid</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdBy"><span>Created By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="createdDate"><span>Created Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastModifiedBy"><span>Last Modified By</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="lastModifiedDate"><span>Last Modified Date</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="doctorName"><span>Doctor</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="nurseName"><span>Nurse</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="patientName"><span>Patient</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="diseaseName"><span>Disease</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="medicineName"><span>Medicine</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let medicalHistory of medicalHistories ;trackBy: trackId">
+                    <td><a [routerLink]="['/medical-history', medicalHistory.id, 'view']">{{ medicalHistory.id }}</a></td>
+                    <td>{{ medicalHistory.joinedAt | date:'medium' }}</td>
+                    <td>{{ medicalHistory.leavedAt | date:'medium' }}</td>
+                    <td>{{ medicalHistory.totalPrice }}</td>
+                    <td>{{ medicalHistory.count }}</td>
+                    <td>{{ medicalHistory.isPaid }}</td>
+                    <td>{{ medicalHistory.createdBy }}</td>
+                    <td>{{ medicalHistory.createdDate | date:'medium' }}</td>
+                    <td>{{ medicalHistory.lastModifiedBy }}</td>
+                    <td>{{ medicalHistory.lastModifiedDate | date:'medium' }}</td>
+                    <td>
+                        <div *ngIf="medicalHistory.doctorId">
+                            <a [routerLink]="['/doctor', medicalHistory.doctorId , 'view']" >{{ medicalHistory.doctorName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="medicalHistory.nurseId">
+                            <a [routerLink]="['/nurse', medicalHistory.nurseId , 'view']" >{{ medicalHistory.nurseName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="medicalHistory.patientId">
+                            <a [routerLink]="['/patient', medicalHistory.patientId , 'view']" >{{ medicalHistory.patientName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="medicalHistory.diseaseId">
+                            <a [routerLink]="['/disease', medicalHistory.diseaseId , 'view']" >{{ medicalHistory.diseaseName }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="medicalHistory.medicineId">
+                            <a [routerLink]="['/medicine', medicalHistory.medicineId , 'view']" >{{ medicalHistory.medicineName }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/medical-history', medicalHistory.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/medical-history', medicalHistory.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(medicalHistory)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="medicalHistories && medicalHistories.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>
