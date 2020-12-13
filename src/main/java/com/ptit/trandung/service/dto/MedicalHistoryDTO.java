@@ -8,7 +8,7 @@ import java.io.Serializable;
  * A DTO for the {@link com.ptit.trandung.domain.MedicalHistory} entity.
  */
 public class MedicalHistoryDTO implements Serializable {
-    
+
     private Long id;
 
     private Instant joinedAt;
@@ -20,6 +20,8 @@ public class MedicalHistoryDTO implements Serializable {
     private Integer count;
 
     private Boolean isPaid;
+
+    private String status;
 
     @Size(min = 1, max = 50)
     private String createdBy;
@@ -51,7 +53,7 @@ public class MedicalHistoryDTO implements Serializable {
     private Long medicineId;
 
     private String medicineName;
-    
+
     public Long getId() {
         return id;
     }

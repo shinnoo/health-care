@@ -123,4 +123,12 @@ public class MedicalHistoryResource {
         medicalHistoryService.delete(id);
         return ResponseEntity.noContent().headers(HeaderUtil.createEntityDeletionAlert(applicationName, false, ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/medical-histories/{userId}/patients")
+    public ResponseEntity<List<MedicalHistoryDTO>> getAllByPatientId(Pageable pageable, @PathVariable Long userId) {
+        log.debug("REST request to get a page of MedicalHistories");
+        Page<MedicalHistoryDTO> page = medicalHistoryService.getAllByPatientId(userId,pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
+        return ResponseEntity.ok().headers(headers).body(page.getContent());
+    }
 }

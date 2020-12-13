@@ -43,4 +43,6 @@ public interface MedicalHistoryService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    Page<MedicalHistoryDTO> getAllByPatientId(Long userId, Pageable pageable);
 }

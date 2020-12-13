@@ -1,6 +1,7 @@
 package com.ptit.trandung.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -16,6 +17,7 @@ import java.time.Instant;
 @Entity
 @Table(name = "medical_history")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Data
 public class MedicalHistory implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,6 +40,9 @@ public class MedicalHistory implements Serializable {
 
     @Column(name = "is_paid")
     private Boolean isPaid;
+
+    @Column(name = "status")
+    private String status;
 
     @Size(min = 1, max = 50)
     @Column(name = "created_by", length = 50)
@@ -180,6 +185,14 @@ public class MedicalHistory implements Serializable {
     public MedicalHistory lastModifiedBy(String lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy;
         return this;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setLastModifiedBy(String lastModifiedBy) {
