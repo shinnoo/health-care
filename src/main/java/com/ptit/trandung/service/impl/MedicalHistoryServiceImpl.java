@@ -1,5 +1,6 @@
 package com.ptit.trandung.service.impl;
 
+import com.ptit.trandung.domain.enumeration.MedicalHistoryStatus;
 import com.ptit.trandung.service.MedicalHistoryService;
 import com.ptit.trandung.domain.MedicalHistory;
 import com.ptit.trandung.repository.MedicalHistoryRepository;
@@ -37,6 +38,7 @@ public class MedicalHistoryServiceImpl implements MedicalHistoryService {
     public MedicalHistoryDTO save(MedicalHistoryDTO medicalHistoryDTO) {
         log.debug("Request to save MedicalHistory : {}", medicalHistoryDTO);
         MedicalHistory medicalHistory = medicalHistoryMapper.toEntity(medicalHistoryDTO);
+//        if (MedicalHistoryStatus.DONE.equals(medicalHistory.))
         medicalHistory = medicalHistoryRepository.save(medicalHistory);
         return medicalHistoryMapper.toDto(medicalHistory);
     }
