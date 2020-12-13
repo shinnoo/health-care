@@ -52,7 +52,6 @@ entity MedicalHistory {
     leavedAt Instant,
     totalPrice Long,
     count Integer,
-    status MedicalHistoryStatus,
     isPaid Boolean,
     createdBy String minlength(1) maxlength(50),
     createdDate Instant,

@@ -1,5 +1,4 @@
 import { Moment } from 'moment';
-import { MedicalHistoryStatus } from 'app/shared/model/enumerations/medical-history-status.model';
 
 export interface IMedicalHistory {
   id?: number;
@@ -7,7 +6,6 @@ export interface IMedicalHistory {
   leavedAt?: Moment;
   totalPrice?: number;
   count?: number;
-  status?: MedicalHistoryStatus;
   isPaid?: boolean;
   createdBy?: string;
   createdDate?: Moment;
@@ -32,7 +30,6 @@ export class MedicalHistory implements IMedicalHistory {
     public leavedAt?: Moment,
     public totalPrice?: number,
     public count?: number,
-    public status?: MedicalHistoryStatus,
     public isPaid?: boolean,
     public createdBy?: string,
     public createdDate?: Moment,

@@ -42,7 +42,7 @@
       "ownerSide": false
     }
   ],
-  "changelogDate": "20201206183322",
+  "changelogDate": "20201206182150",
   "javadoc": "Task entity.\\n@author The JHipster team.",
   "entityTableName": "disease",
   "dto": "mapstruct",

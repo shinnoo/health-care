@@ -3,7 +3,6 @@ package com.ptit.trandung.service.dto;
 import java.time.Instant;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import com.ptit.trandung.domain.enumeration.MedicalHistoryStatus;
 
 /**
  * A DTO for the {@link com.ptit.trandung.domain.MedicalHistory} entity.
@@ -19,8 +18,6 @@ public class MedicalHistoryDTO implements Serializable {
     private Long totalPrice;
 
     private Integer count;
-
-    private MedicalHistoryStatus status;
 
     private Boolean isPaid;
 
@@ -93,14 +90,6 @@ public class MedicalHistoryDTO implements Serializable {
 
     public void setCount(Integer count) {
         this.count = count;
-    }
-
-    public MedicalHistoryStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(MedicalHistoryStatus status) {
-        this.status = status;
     }
 
     public Boolean isIsPaid() {
@@ -249,7 +238,6 @@ public class MedicalHistoryDTO implements Serializable {
             ", leavedAt='" + getLeavedAt() + "'" +
             ", totalPrice=" + getTotalPrice() +
             ", count=" + getCount() +
-            ", status='" + getStatus() + "'" +
             ", isPaid='" + isIsPaid() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +

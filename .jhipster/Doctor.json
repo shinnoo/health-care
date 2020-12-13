@@ -75,7 +75,7 @@
       "ownerSide": true
     }
   ],
-  "changelogDate": "20201206182922",
+  "changelogDate": "20201206181750",
   "entityTableName": "doctor",
   "dto": "mapstruct",
   "pagination": "pagination",

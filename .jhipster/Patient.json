@@ -50,7 +50,7 @@
     }
   ],
   "relationships": [],
-  "changelogDate": "20201206183122",
+  "changelogDate": "20201206181950",
   "javadoc": "not an ignored comment",
   "entityTableName": "patient",
   "dto": "mapstruct",

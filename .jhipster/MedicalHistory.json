@@ -18,11 +18,6 @@
       "fieldType": "Integer"
     },
     {
-      "fieldName": "status",
-      "fieldType": "MedicalHistoryStatus",
-      "fieldValues": "WELCOME,DRUG_SUPPLY,INJECT,CARE,DONE"
-    },
-    {
       "fieldName": "isPaid",
       "fieldType": "Boolean"
     },
@@ -86,7 +81,7 @@
       "otherEntityField": "name"
     }
   ],
-  "changelogDate": "20201206183222",
+  "changelogDate": "20201206182050",
   "entityTableName": "medical_history",
   "dto": "mapstruct",
   "pagination": "pagination",

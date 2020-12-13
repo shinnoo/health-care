@@ -10,8 +10,6 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
 
-import com.ptit.trandung.domain.enumeration.MedicalHistoryStatus;
-
 /**
  * A MedicalHistory.
  */
@@ -37,10 +35,6 @@ public class MedicalHistory implements Serializable {
 
     @Column(name = "count")
     private Integer count;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    private MedicalHistoryStatus status;
 
     @Column(name = "is_paid")
     private Boolean isPaid;
@@ -138,19 +132,6 @@ public class MedicalHistory implements Serializable {
 
     public void setCount(Integer count) {
         this.count = count;
-    }
-
-    public MedicalHistoryStatus getStatus() {
-        return status;
-    }
-
-    public MedicalHistory status(MedicalHistoryStatus status) {
-        this.status = status;
-        return this;
-    }
-
-    public void setStatus(MedicalHistoryStatus status) {
-        this.status = status;
     }
 
     public Boolean isIsPaid() {
@@ -309,7 +290,6 @@ public class MedicalHistory implements Serializable {
             ", leavedAt='" + getLeavedAt() + "'" +
             ", totalPrice=" + getTotalPrice() +
             ", count=" + getCount() +
-            ", status='" + getStatus() + "'" +
             ", isPaid='" + isIsPaid() + "'" +
             ", createdBy='" + getCreatedBy() + "'" +
             ", createdDate='" + getCreatedDate() + "'" +

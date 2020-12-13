@@ -33,7 +33,7 @@
     }
   ],
   "relationships": [],
-  "changelogDate": "20201206183422",
+  "changelogDate": "20201206182250",
   "entityTableName": "medicine",
   "dto": "mapstruct",
   "pagination": "pagination",

@@ -40,7 +40,6 @@ export class MedicalHistoryUpdateComponent implements OnInit {
     leavedAt: [],
     totalPrice: [],
     count: [],
-    status: [],
     isPaid: [],
     createdBy: [null, [Validators.minLength(1), Validators.maxLength(50)]],
     createdDate: [],
@@ -95,7 +94,6 @@ export class MedicalHistoryUpdateComponent implements OnInit {
       leavedAt: medicalHistory.leavedAt ? medicalHistory.leavedAt.format(DATE_TIME_FORMAT) : null,
       totalPrice: medicalHistory.totalPrice,
       count: medicalHistory.count,
-      status: medicalHistory.status,
       isPaid: medicalHistory.isPaid,
       createdBy: medicalHistory.createdBy,
       createdDate: medicalHistory.createdDate ? medicalHistory.createdDate.format(DATE_TIME_FORMAT) : null,
@@ -131,7 +129,6 @@ export class MedicalHistoryUpdateComponent implements OnInit {
       leavedAt: this.editForm.get(['leavedAt'])!.value ? moment(this.editForm.get(['leavedAt'])!.value, DATE_TIME_FORMAT) : undefined,
       totalPrice: this.editForm.get(['totalPrice'])!.value,
       count: this.editForm.get(['count'])!.value,
-      status: this.editForm.get(['status'])!.value,
       isPaid: this.editForm.get(['isPaid'])!.value,
       createdBy: this.editForm.get(['createdBy'])!.value,
       createdDate: this.editForm.get(['createdDate'])!.value

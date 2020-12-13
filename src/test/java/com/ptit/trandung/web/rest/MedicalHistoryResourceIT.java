@@ -26,7 +26,6 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.ptit.trandung.domain.enumeration.MedicalHistoryStatus;
 /**
  * Integration tests for the {@link MedicalHistoryResource} REST controller.
  */
@@ -46,9 +45,6 @@ public class MedicalHistoryResourceIT {
 
     private static final Integer DEFAULT_COUNT = 1;
     private static final Integer UPDATED_COUNT = 2;
-
-    private static final MedicalHistoryStatus DEFAULT_STATUS = MedicalHistoryStatus.WELCOME;
-    private static final MedicalHistoryStatus UPDATED_STATUS = MedicalHistoryStatus.DRUG_SUPPLY;
 
     private static final Boolean DEFAULT_IS_PAID = false;
     private static final Boolean UPDATED_IS_PAID = true;
@@ -94,7 +90,6 @@ public class MedicalHistoryResourceIT {
             .leavedAt(DEFAULT_LEAVED_AT)
             .totalPrice(DEFAULT_TOTAL_PRICE)
             .count(DEFAULT_COUNT)
-            .status(DEFAULT_STATUS)
             .isPaid(DEFAULT_IS_PAID)
             .createdBy(DEFAULT_CREATED_BY)
             .createdDate(DEFAULT_CREATED_DATE)
@@ -114,7 +109,6 @@ public class MedicalHistoryResourceIT {
             .leavedAt(UPDATED_LEAVED_AT)
             .totalPrice(UPDATED_TOTAL_PRICE)
             .count(UPDATED_COUNT)
-            .status(UPDATED_STATUS)
             .isPaid(UPDATED_IS_PAID)
             .createdBy(UPDATED_CREATED_BY)
             .createdDate(UPDATED_CREATED_DATE)
@@ -147,7 +141,6 @@ public class MedicalHistoryResourceIT {
         assertThat(testMedicalHistory.getLeavedAt()).isEqualTo(DEFAULT_LEAVED_AT);
         assertThat(testMedicalHistory.getTotalPrice()).isEqualTo(DEFAULT_TOTAL_PRICE);
         assertThat(testMedicalHistory.getCount()).isEqualTo(DEFAULT_COUNT);
-        assertThat(testMedicalHistory.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testMedicalHistory.isIsPaid()).isEqualTo(DEFAULT_IS_PAID);
         assertThat(testMedicalHistory.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
         assertThat(testMedicalHistory.getCreatedDate()).isEqualTo(DEFAULT_CREATED_DATE);
@@ -191,7 +184,6 @@ public class MedicalHistoryResourceIT {
             .andExpect(jsonPath("$.[*].leavedAt").value(hasItem(DEFAULT_LEAVED_AT.toString())))
             .andExpect(jsonPath("$.[*].totalPrice").value(hasItem(DEFAULT_TOTAL_PRICE.intValue())))
             .andExpect(jsonPath("$.[*].count").value(hasItem(DEFAULT_COUNT)))
-            .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())))
             .andExpect(jsonPath("$.[*].isPaid").value(hasItem(DEFAULT_IS_PAID.booleanValue())))
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY)))
             .andExpect(jsonPath("$.[*].createdDate").value(hasItem(DEFAULT_CREATED_DATE.toString())))
@@ -214,7 +206,6 @@ public class MedicalHistoryResourceIT {
             .andExpect(jsonPath("$.leavedAt").value(DEFAULT_LEAVED_AT.toString()))
             .andExpect(jsonPath("$.totalPrice").value(DEFAULT_TOTAL_PRICE.intValue()))
             .andExpect(jsonPath("$.count").value(DEFAULT_COUNT))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()))
             .andExpect(jsonPath("$.isPaid").value(DEFAULT_IS_PAID.booleanValue()))
             .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY))
             .andExpect(jsonPath("$.createdDate").value(DEFAULT_CREATED_DATE.toString()))
@@ -246,7 +237,6 @@ public class MedicalHistoryResourceIT {
             .leavedAt(UPDATED_LEAVED_AT)
             .totalPrice(UPDATED_TOTAL_PRICE)
             .count(UPDATED_COUNT)
-            .status(UPDATED_STATUS)
             .isPaid(UPDATED_IS_PAID)
             .createdBy(UPDATED_CREATED_BY)
             .createdDate(UPDATED_CREATED_DATE)
@@ -267,7 +257,6 @@ public class MedicalHistoryResourceIT {
         assertThat(testMedicalHistory.getLeavedAt()).isEqualTo(UPDATED_LEAVED_AT);
         assertThat(testMedicalHistory.getTotalPrice()).isEqualTo(UPDATED_TOTAL_PRICE);
         assertThat(testMedicalHistory.getCount()).isEqualTo(UPDATED_COUNT);
-        assertThat(testMedicalHistory.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testMedicalHistory.isIsPaid()).isEqualTo(UPDATED_IS_PAID);
         assertThat(testMedicalHistory.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
         assertThat(testMedicalHistory.getCreatedDate()).isEqualTo(UPDATED_CREATED_DATE);

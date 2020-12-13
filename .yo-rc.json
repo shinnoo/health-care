@@ -35,6 +35,10 @@
     "dtoSuffix": "DTO",
     "otherModules": [],
     "enableTranslation": false,
-    "blueprints": []
+    "blueprints": [],
+    "azureAppServicePlan": "HealthCare-plan",
+    "azureApplicationInsightsName": "trandung",
+    "azureAppServiceName": "healthcareptit",
+    "azureAppServiceDeploymentType": "local"
   }
 }

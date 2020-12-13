@@ -4,7 +4,6 @@ import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { MedicalHistoryService } from 'app/entities/medical-history/medical-history.service';
 import { IMedicalHistory, MedicalHistory } from 'app/shared/model/medical-history.model';
-import { MedicalHistoryStatus } from 'app/shared/model/enumerations/medical-history-status.model';
 
 describe('Service Tests', () => {
   describe('MedicalHistory Service', () => {
@@ -25,19 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new MedicalHistory(
-        0,
-        currentDate,
-        currentDate,
-        0,
-        0,
-        MedicalHistoryStatus.WELCOME,
-        false,
-        'AAAAAAA',
-        currentDate,
-        'AAAAAAA',
-        currentDate
-      );
+      elemDefault = new MedicalHistory(0, currentDate, currentDate, 0, 0, false, 'AAAAAAA', currentDate, 'AAAAAAA', currentDate);
     });
 
     describe('Service methods', () => {
@@ -95,7 +82,6 @@ describe('Service Tests', () => {
             leavedAt: currentDate.format(DATE_TIME_FORMAT),
             totalPrice: 1,
             count: 1,
-            status: 'BBBBBB',
             isPaid: true,
             createdBy: 'BBBBBB',
             createdDate: currentDate.format(DATE_TIME_FORMAT),
@@ -129,7 +115,6 @@ describe('Service Tests', () => {
             leavedAt: currentDate.format(DATE_TIME_FORMAT),
             totalPrice: 1,
             count: 1,
-            status: 'BBBBBB',
             isPaid: true,
             createdBy: 'BBBBBB',
             createdDate: currentDate.format(DATE_TIME_FORMAT),
